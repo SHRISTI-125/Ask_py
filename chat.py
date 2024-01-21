@@ -1,6 +1,8 @@
 import json
 import random
 
+print("\n\nAsk the question\nWrite \"STOP\" to stop the coversation!")
+
 data = {
         "hi" : "Hi there!",
 
@@ -66,7 +68,7 @@ data = {
 
         "which computer scientist is known as the father of the World Wide Web" : "Tim Berners-Lee",
         
-        "tell another fact" : "Eleven plus two” is an anagram of twelve plus one which is pretty fitting as the answer to both equations is 13. Also, there are 13 letters in both “eleven plus two” and twelve plus one.",
+        "tell another fact" : ["Eleven plus two” is an anagram of twelve plus one which is pretty fitting as the answer to both equations is 13. Also, there are 13 letters in both “eleven plus two” and twelve plus one.","The addition of numbers on the opposite side of dice always equal seven."]
 
         "thanks" : "You're Welcome!"
 }
@@ -76,17 +78,18 @@ json_string = json.dumps(data)
 
 data = json.loads(json_string)
 
-z=1;
-
-
-while z==1:
-
+while True:
+        
     ask = input("User : ")
+    if(ask=="0" or ask=="bye" or ask == "end" or ask =="false" or ask=="stop" or ask=="STOP" or ask =="Stop"):
+        print("Thanks!")
+        break
+            
     #special_symbol = ['`','~','!','@','#','$','%','^','&','*','(',')','{','}','[',']','.','/','?','+','-','<','>',',']
     special_symbol = str.maketrans("i", "h", "@#.~`!$%^&*(){}[]:<>?/+-,")
     ask = ask.translate(special_symbol)
     ask = ask.lower()
-    print(ask)
+    #print(ask)
 
     if(ask not in data):
         print("Sorry I can't answer")
@@ -94,15 +97,10 @@ while z==1:
         print("Bot : ",end=random.choice(data[ask]))
     else:
         print((data[ask]))
+            
     print("\n")
 
-    print("Do you want to continue? ")
-    con = input("Y/N : ")
-    if con=="y" or con == "Y" or con =="yes" or con =="Yes" or con =="YES":
-        z=1
-    else:
-        z=0;
-
+    
 
 
 
