@@ -93,7 +93,7 @@ while True:
 
     if(ask not in data):
         print("Sorry I can't answer")
-    if("fact" in ask or "quote" in ask or "programming language" in ask):
+    elif("fact" in ask or "quote" in ask or "programming language" in ask):
         print("Bot : ",end=random.choice(data[ask]))
     else:
         print((data[ask]))
